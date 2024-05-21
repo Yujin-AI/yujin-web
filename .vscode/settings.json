@@ -1,3 +1,4 @@
 {
-    "cSpell.words": ["yujin"]
+    "cSpell.words": ["clsx", "hookform", "ianvs", "lucide", "yujin"],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }
