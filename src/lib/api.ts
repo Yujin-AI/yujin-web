@@ -1,10 +1,19 @@
 import env from "@/env.mjs";
 
-export const api = (path: string, options: RequestInit) => {
+import { getServerUser } from "./auth/server-user";
+
+export const api = async (path: string, options: RequestInit) => {
+    const user = await getServerUser();
+
+    const headers: HeadersInit = {
+        "Content-Type": "application/json",
+    };
+    if (user) {
+        headers.Authorization = `Bearer ${user.token.token}`;
+    }
+
     return fetch(`${env.API_URL}${path}`, {
         ...options,
-        headers: {
-            "Content-Type": "application/json",
-        },
+        headers,
     });
 };

@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signupAction, SignupStates } from "@/actions/signup-action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { useFormState } from "react-dom";
@@ -15,7 +16,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Icons } from "@/components/icons";
-import { signupAction, SignupStates } from "@/app/(auth)/signup/signup-action";
 
 import { toast } from "./ui/use-toast";
 
