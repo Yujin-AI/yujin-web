@@ -5,6 +5,7 @@
         "hookform",
         "ianvs",
         "lucide",
+        "nextauth",
         "yujin"
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib"

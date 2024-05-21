@@ -33,7 +33,7 @@ export default function LogoutPage() {
             setCountdown((prev) => prev - 1);
         }, 1000);
 
-        if (countdown === 0) {
+        if (countdown < 1) {
             signOut({ redirect: true, callbackUrl: "/login" });
         }
 
@@ -41,8 +41,8 @@ export default function LogoutPage() {
     }, [countdown]);
 
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 px-4 ">
-            <div className="mx-auto max-w-md space-y-4 rounded-lg bg-white p-8 shadow-lg">
+        <div className="flex min-h-screen flex-col items-center justify-center px-4 ">
+            <div className="mx-auto max-w-md space-y-4 rounded-lg p-8 shadow-lg">
                 <div className="space-y-2 text-center">
                     <Icons.logOut className="mx-auto h-12 w-12 text-red-500" />
                     <h2 className="text-2xl font-bold">{title}</h2>

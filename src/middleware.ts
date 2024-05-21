@@ -1,9 +1,10 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
     const requestHeaders = new Headers(req.headers);
-    requestHeaders.set("x-pathname", req.nextUrl.pathname);
+    const pathname = req.nextUrl.pathname;
+
+    requestHeaders.set("x-pathname", pathname);
 
     return NextResponse.next({
         request: {

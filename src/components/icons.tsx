@@ -12,11 +12,13 @@ import {
     HelpCircle,
     Image,
     Laptop,
+    LayoutDashboard,
     Loader2,
     LogOut,
     LucideProps,
     Moon,
     MoreVertical,
+    Newspaper,
     Pizza,
     Plus,
     Settings,
@@ -54,6 +56,8 @@ export const Icons = {
     eye: Eye,
     eyeOff: EyeOff,
     logOut: LogOut,
+    dashboard: LayoutDashboard,
+    articles: Newspaper,
     gitHub: ({ ...props }: LucideProps) => (
         <svg
             aria-hidden="true"
