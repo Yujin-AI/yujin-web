@@ -61,7 +61,7 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
             });
         }
 
-        router.push(signInResult.url || "/dashboard");
+        router.refresh();
         return toast({
             title: "Login successful.",
             description: "Now enjoy your Yujin AI chatbot.",
