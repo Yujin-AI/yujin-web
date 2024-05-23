@@ -1,19 +1,7 @@
 "use server";
 
-import { api } from "@/lib/api";
+import { cookies } from "next/headers";
 
-export async function selectChatbotAction(
-    id: string
-): Promise<SelectChatbotStates> {
-    const selectChatbot = await api(`/chatbots/${id}/select`, {
-        method: "put",
-    });
-    const response = await selectChatbot.json();
-    return { ...response, status: selectChatbot.status };
+export async function selectChatbotAction(id: string) {
+    cookies().set("selectedChatbot", id);
 }
-
-export type SelectChatbotStates = {
-    status: number;
-    success: boolean;
-    message: string;
-} | null;

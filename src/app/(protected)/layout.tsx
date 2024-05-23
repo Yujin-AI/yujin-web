@@ -1,12 +1,14 @@
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { sidebarConfig } from "@/config/sidebar-config";
-import { getDBUser } from "@/lib/auth/server-user";
+import { getServerUser } from "@/lib/auth/server-user";
 import { ModeToggle } from "@/components/mode-toggle";
 import { DashboardNav } from "@/components/nav";
+import SessionExpired from "@/components/session-expired";
+import UnauthorizedPage from "@/components/unauthorize";
 import { UserAccountNav } from "@/components/user-account-nav";
 
 interface AuthLayoutProps {
@@ -14,26 +16,22 @@ interface AuthLayoutProps {
 }
 
 export default async function AuthLayout({ children }: AuthLayoutProps) {
-    const user = await getDBUser();
-    if (!user) {
-        redirect(
-            "/logout?title=Unauthorized&description=You must be logged in to view this page.&variant=destructive"
-        );
-    }
-    const expiresAt = new Date(user.token.expiresAt);
-    if (expiresAt < new Date()) {
-        redirect(
-            "/logout?title=Session expired&description=Please log in again.&variant=destructive"
-        );
-    }
+    const user = await getServerUser();
 
-    // const response = await api("/chatbots", {});
-    // const chatbots = await response.json().then((data) => data.data);
+    if (!user) {
+        return <UnauthorizedPage />;
+    }
+    const expiresAt = new Date(user?.token?.expiresAt);
+    if (expiresAt < new Date()) {
+        <SessionExpired />;
+    }
 
     const headersList = headers();
-    const url = headersList.get("x-pathname");
+    const pathname = headersList.get("x-pathname");
 
-    if (!user.defaultChatbotId && url !== "/chatbots") redirect("/chatbots");
+    if (!cookies().get("selectedChatbot") && pathname !== "/chatbots") {
+        redirect("chatbots");
+    }
 
     return (
         <div className="flex min-h-screen flex-col space-y-6">
@@ -42,7 +40,7 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
                     {/* <MainNav items={dashboardConfig.mainNav} /> */}
                     <Link href={"/chatbots"}>
                         <Image
-                            src="/logo.svg"
+                            src="logo.svg"
                             alt="Yujin logo"
                             width={50}
                             height={50}
