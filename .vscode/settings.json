@@ -6,6 +6,8 @@
         "ianvs",
         "lucide",
         "nextauth",
+        "sonner",
+        "tanstack",
         "yujin"
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib"
