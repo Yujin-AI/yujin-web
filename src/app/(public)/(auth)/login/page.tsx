@@ -35,6 +35,7 @@ export default function LoginPage() {
                         width={100}
                         height={100}
                         className="mx-auto"
+                        priority={false}
                     />
                     <h1 className="text-2xl font-semibold tracking-tight">
                         Welcome back
