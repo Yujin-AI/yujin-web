@@ -1,5 +1,4 @@
 import * as React from "react";
-import { cookies } from "next/headers";
 import { SearchParams } from "@/types";
 
 import { DataTableSkeleton } from "@/components/data-table/data-table-skeleton";
@@ -7,7 +6,7 @@ import { DateRangePicker } from "@/components/date-range-picker";
 import { Shell } from "@/components/shell";
 
 import { ArticlesTable } from "./_components/article-table";
-import { ArticlesTableProvider } from "./_components/article-table-provider";
+import { ArticlesTableProvider } from "./_components/articles-table-provider";
 import { getArticles } from "./_lib/queries";
 import { searchParamsSchema } from "./_lib/validations";
 
@@ -16,8 +15,6 @@ export interface IndexPageProps {
 }
 
 export default async function ArticlesPage({ searchParams }: IndexPageProps) {
-    const chatbotId = cookies().get("selectedChatbot");
-
     const search = searchParamsSchema.parse(searchParams);
 
     const articlesPromise = getArticles(search);

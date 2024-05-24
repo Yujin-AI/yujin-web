@@ -63,7 +63,10 @@ export function getArticlesColumns(): ColumnDef<ArticleProps>[] {
             cell: ({ row }) => {
                 const label = row.original.sourceType;
                 return (
-                    <div className="flex space-x-2">
+                    <Link
+                        className="flex space-x-2"
+                        href={`/articles/${row.original.slug}`}
+                    >
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <span className="max-w-[10.25rem] truncate font-medium">
@@ -78,7 +81,7 @@ export function getArticlesColumns(): ColumnDef<ArticleProps>[] {
                             </TooltipContent>
                         </Tooltip>
                         {label && <Badge variant="outline">{label}</Badge>}
-                    </div>
+                    </Link>
                 );
             },
         },
@@ -90,8 +93,6 @@ export function getArticlesColumns(): ColumnDef<ArticleProps>[] {
             cell: ({ row }) => {
                 return (
                     <div className="flex space-x-2">
-                        {/* {label && <Badge variant="outline">{label}</Badge>} */}
-
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <span className="max-w-[10.25rem] truncate font-medium">
