@@ -1,13 +1,18 @@
-import { revalidatePath } from "next/cache";
+"use server";
 
+import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+
+import { api } from "@/lib/api";
 import { getErrorMessage } from "@/lib/handle-error";
 
 import { ArticleProps } from "../_types/article-types";
 
 export async function deleteArticles(input: { ids: string[] }) {
     try {
-        // await db.delete(tasks).where(inArray(tasks.id, input.ids));
-        // todo)) backend implementation needed
+        const chatbotId = cookies().get("selectedChatbot")?.value;
+        const queryParam = input.ids.map((id) => `ids[]=${id}`).join("&");
+        await api(`/${chatbotId}/articles?${queryParam}`, { method: "DELETE" });
 
         revalidatePath("/");
 
@@ -24,7 +29,7 @@ export async function deleteArticles(input: { ids: string[] }) {
 }
 
 export async function updateArticles(input: {
-    ids: string[];
+    id: string;
     isProcessed?: ArticleProps["isProcessed"];
     isPublished?: ArticleProps["isPublished"];
 }) {

@@ -13,22 +13,24 @@ export const getArticles = async (input: GetArticlesSchema) => {
     noStore();
     const { page, limit, sort, title, status, priority, operator, from, to } =
         input;
-    const chatbotId = cookies().get("selectedChatbot");
+    const chatbotId = cookies().get("selectedChatbot")?.value;
     try {
         // Column and order to sort by
         // Splitting the sort string by "." to get the column and order
         // Example: "title.desc" => ["title", "desc"]
 
-        const res = (await api(`/${chatbotId}/articles`, {}).then((res) =>
-            res.json()
-        )) as { success: boolean; meta: any; data: ArticleProps[] };
+        const res = (await api(
+            `/${chatbotId}/articles?page=${page}&limit=${limit}`,
+            {}
+        ).then((res) => res.json())) as {
+            success: boolean;
+            meta: any;
+            data: ArticleProps[];
+        };
 
         const data = res.data;
-        const pageCount = res.meta.lastPage;
+        const pageCount = res.meta.lastPage as number;
         return { data, pageCount };
-
-        // const pageCount = Math.ceil(total / limit);
-        // return { data, pageCount };
     } catch (err) {
         const data: ArticleProps[] = [];
         return { data, pageCount: 0 };

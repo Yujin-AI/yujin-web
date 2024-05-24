@@ -11,7 +11,7 @@ interface SidebaRNavProps {
     items: SidebarNavItem[];
 }
 
-export function DashboardNav({ items }: SidebaRNavProps) {
+export function SideNav({ items }: SidebaRNavProps) {
     const path = usePathname();
 
     if (!items?.length) {

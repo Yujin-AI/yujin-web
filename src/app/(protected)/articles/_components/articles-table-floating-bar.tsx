@@ -71,7 +71,7 @@ export function ArticlesTableFloatingBar({
                                     />
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent className="flex items-center border bg-accent px-2 py-1 font-semibold text-foreground dark:bg-zinc-900">
+                            <TooltipContent className="flex items-center border bg-accent px-2 py-1 font-semibold text-foreground">
                                 <p className="mr-2">Clear selection</p>
                                 <Kbd abbrTitle="Escape" variant="outline">
                                     Esc
@@ -291,7 +291,7 @@ export function ArticlesTableFloatingBar({
                                     )}
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent className=" border bg-accent font-semibold text-foreground dark:bg-zinc-900">
+                            <TooltipContent className=" border bg-accent font-semibold text-foreground">
                                 <p>Delete articles</p>
                             </TooltipContent>
                         </Tooltip>

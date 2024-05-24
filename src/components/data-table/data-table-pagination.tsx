@@ -81,7 +81,7 @@ export function DataTablePagination<TData>({
                         onClick={() => table.previousPage()}
                         disabled={!table.getCanPreviousPage()}
                     >
-                        <Icons.chevronDoubleLeft
+                        <Icons.chevronLeft
                             className="size-4"
                             aria-hidden="true"
                         />
@@ -94,7 +94,7 @@ export function DataTablePagination<TData>({
                         onClick={() => table.nextPage()}
                         disabled={!table.getCanNextPage()}
                     >
-                        <Icons.chevronLeft
+                        <Icons.chevronRight
                             className="size-4"
                             aria-hidden="true"
                         />

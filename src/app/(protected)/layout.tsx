@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { sidebarConfig } from "@/config/sidebar-config";
 import { getServerUser } from "@/lib/auth/server-user";
 import { ModeToggle } from "@/components/mode-toggle";
-import { DashboardNav } from "@/components/nav";
+import { SideNav } from "@/components/nav";
 import SessionExpired from "@/components/session-expired";
 import UnauthorizedPage from "@/components/unauthorize";
 import { UserAccountNav } from "@/components/user-account-nav";
@@ -21,9 +21,9 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
     if (!user) {
         return <UnauthorizedPage />;
     }
-    const expiresAt = new Date(user?.token?.expiresAt);
+    const expiresAt = new Date(user.token.expiresAt);
     if (expiresAt < new Date()) {
-        <SessionExpired />;
+        return <SessionExpired />;
     }
 
     const headersList = headers();
@@ -34,21 +34,19 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
     }
 
     return (
-        <div className="flex min-h-screen flex-col space-y-6">
-            <header className="sticky top-0 z-40 border-b bg-background">
+        <div className="flex min-h-screen flex-col ">
+            <header className="sticky top-0 z-50 border-b bg-background">
                 <div className="container flex h-16 items-center justify-between py-4">
-                    {/* <MainNav items={dashboardConfig.mainNav} /> */}
                     <Link href={"/chatbots"}>
                         <Image
-                            src="logo.svg"
+                            src="/logo.svg"
                             alt="Yujin logo"
                             width={50}
                             height={50}
-                        ></Image>
+                        />
                     </Link>
                     <div className="flex gap-3">
                         <ModeToggle />
-
                         <UserAccountNav
                             user={{
                                 name: user.name,
@@ -58,11 +56,11 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
                     </div>
                 </div>
             </header>
-            <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-                <aside className="hidden w-[200px] flex-col md:flex">
-                    <DashboardNav items={sidebarConfig.sidebarNav} />
+            <div className="flex flex-1">
+                <aside className="fixed top-[4.5rem] left-5 w-[200px] h-[calc(100%-4rem)] overflow-y-auto  bg-background">
+                    <SideNav items={sidebarConfig.sidebarNav} />
                 </aside>
-                <main className="flex w-full flex-1 flex-col overflow-hidden">
+                <main className="ml-[200px] flex-1 overflow-y-auto p-6">
                     {children}
                 </main>
             </div>

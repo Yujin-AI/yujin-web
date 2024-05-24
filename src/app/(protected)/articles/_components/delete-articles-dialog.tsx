@@ -55,8 +55,8 @@ export function DeleteArticlesDialog({
                         This action cannot be undone. This will permanently
                         delete your{" "}
                         <span className="font-medium">{articles.length}</span>
-                        {articles.length === 1 ? " task" : " articles"} from our
-                        servers.
+                        {articles.length === 1 ? " article" : " articles"} from
+                        our servers.
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="gap-2 sm:space-x-0">
@@ -69,7 +69,7 @@ export function DeleteArticlesDialog({
                         onClick={() => {
                             startDeleteTransition(async () => {
                                 const { error } = await deleteArticles({
-                                    ids: articles.map((task) => task.id),
+                                    ids: articles.map((article) => article.id),
                                 });
 
                                 if (error) {

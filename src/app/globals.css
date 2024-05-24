@@ -74,3 +74,26 @@
         @apply bg-background text-foreground;
     }
 }
+
+::-webkit-scrollbar {
+    width: 9px; /* Increased width for better visibility */
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(
+        var(--background)
+    ); /* Use a contrasting color for better visibility */
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(
+        var(--secondary)
+    ); /* Use a contrasting color for better visibility */
+    border-radius: 9px; /* Adjust as needed */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(
+        var(--secondary)
+    ); /* Use a different color for handle on hover for better visibility */
+}
