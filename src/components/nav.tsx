@@ -11,8 +11,8 @@ interface SidebaRNavProps {
     items: SidebarNavItem[];
 }
 
-export function DashboardNav({ items }: SidebaRNavProps) {
-    const path = usePathname();
+export function SideNav({ items }: SidebaRNavProps) {
+    const path = usePathname().split("/");
 
     if (!items?.length) {
         return null;
@@ -31,7 +31,7 @@ export function DashboardNav({ items }: SidebaRNavProps) {
                             <span
                                 className={cn(
                                     "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                                    path === item.href
+                                    path.includes(item.href.split("/")[1])
                                         ? "bg-accent"
                                         : "transparent",
                                     item.disabled &&

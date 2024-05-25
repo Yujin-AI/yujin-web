@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { sidebarConfig } from "@/config/sidebar-config";
 import { getServerUser } from "@/lib/auth/server-user";
 import { ModeToggle } from "@/components/mode-toggle";
-import { DashboardNav } from "@/components/nav";
+import { SideNav } from "@/components/nav";
 import SessionExpired from "@/components/session-expired";
 import UnauthorizedPage from "@/components/unauthorize";
 import { UserAccountNav } from "@/components/user-account-nav";
@@ -60,7 +60,7 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
             </header>
             <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
                 <aside className="hidden w-[200px] flex-col md:flex">
-                    <DashboardNav items={sidebarConfig.sidebarNav} />
+                    <SideNav items={sidebarConfig.sidebarNav} />
                 </aside>
                 <main className="flex w-full flex-1 flex-col overflow-hidden">
                     {children}
