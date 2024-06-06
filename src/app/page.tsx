@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Boxes } from "@/components/ui/background-boxes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -15,7 +17,7 @@ export default function Component() {
                 height={30}
                 priority
             />{" "}
-            <h3 className="ml-4 font-bold text-4xl ">YUjin</h3>
+            <h3 className="ml-4 font-bold text-2xl ">YUjin</h3>
             <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6">
                 <Link
                     className="flex items-center gap-2 text-lg font-semibold sm:text-base mr-4"
@@ -25,17 +27,30 @@ export default function Component() {
 
                     <span className="sr-only">Acme Inc</span>
                 </Link>
-                <nav className="hidden font-medium sm:flex flex-row items-center gap-5 text-sm lg:gap-6">
-                    <Link className="text-gray-500 dark:text-gray-400" href="#">
+
+                <nav className="hidden font-medium  sm:flex flex-row mx-uitems-center gap-5 text-xl lg:gap-6">
+                    <Link
+                        className="text-gray-500 hover:bg-gray-50 dark:text-gray-400 text-xl; "
+                        href="#"
+                    >
                         Features
                     </Link>
-                    <Link className="text-gray-500 dark:text-gray-400" href="#">
+                    <Link
+                        className="text-gray-500 hover:bg-gray-50 dark:text-gray-400 text-xl;"
+                        href="#"
+                    >
                         Pricing
                     </Link>
-                    <Link className="text-gray-500 dark:text-gray-400" href="#">
+                    <Link
+                        className="text-gray-500 hover:bg-gray-50 dark:text-gray-400 text-xl;"
+                        href="#"
+                    >
                         About
                     </Link>
-                    <Link className="text-gray-500 dark:text-gray-400" href="#">
+                    <Link
+                        className="text-gray-500 hover:bg-gray-50 dark:text-gray-400 text-2xl;"
+                        href="#"
+                    >
                         Contact
                     </Link>
                 </nav>
@@ -54,7 +69,7 @@ export default function Component() {
                     <div className="px-4 md:px-6 space-y-10 xl:space-y-16">
                         <div className="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16">
                             <div>
-                                <h1 className=" text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
+                                <h1 className=" font-bold text-6xl mb-4 -mt-8 pb-4 tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                                     Revolutionize Your Customer Support with Our
                                     Chatbot Solutions
                                 </h1>
@@ -87,6 +102,7 @@ export default function Component() {
                         </div>
                     </div>
                 </section>
+                <BackgroundBeams />
                 <section className="w-full py-12 md:py-24 lg:py-32">
                     <div className="container space-y-12 px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -286,6 +302,7 @@ export default function Component() {
                         </div>
                     </div>
                 </section>
+                {/* <Boxes /> */}
                 <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
                     <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
                         <div className="space-y-2">
